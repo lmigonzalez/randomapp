@@ -1,23 +1,41 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 
 function App() {
+
+  const [allNum, setAllNum]= useState([])
+
+  const [number, setNumber] = useState(0)
+
+  const handleRandom100 = () =>{
+    setNumber(Math.round(Math.random() * 100))
+    setAllNum([...allNum, `-${number}-`])
+  }
+
+  const handleRandom1000 = () =>{
+    setNumber(Math.round(Math.random() * 1000))
+    setAllNum([...allNum, `-${number}-`])
+  }
+
+  const handleRandom1000000 = () =>{
+    setNumber(Math.round(Math.random() * 1000000))
+    setAllNum([...allNum, `-${number}-`])
+  }
+
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Random Number</h1>
+      <h2>{number}</h2>
+    <div>
+      <button onClick={handleRandom100}>0 - 100</button>
+      <button onClick={handleRandom1000}>0 - 1,000</button>
+      <button onClick={handleRandom1000000}>0 - 1,000,000</button>
+    </div>
+
+    <div>{allNum}</div>
     </div>
   );
 }
